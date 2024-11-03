@@ -1,4 +1,4 @@
-package org.example.Ex05Operators.assignment;
+package org.example.Ex03Operators.assignment;
 
 import org.example.common.AbstractHttpClient;
 import reactor.core.publisher.Mono;

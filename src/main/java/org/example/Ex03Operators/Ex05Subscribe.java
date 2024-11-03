@@ -1,4 +1,4 @@
-package org.example.Ex05Operators;
+package org.example.Ex03Operators;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

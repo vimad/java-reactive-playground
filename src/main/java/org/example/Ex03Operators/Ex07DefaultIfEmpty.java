@@ -1,22 +1,20 @@
-package org.example.Ex05Operators;
+package org.example.Ex03Operators;
 
 import org.example.common.Util;
 import reactor.core.publisher.Flux;
 
-import java.time.Duration;
-
-public class Ex04Delay {
+/*
+    Similar to error handling.
+    Handling empty!
+ */
+public class Ex07DefaultIfEmpty {
 
     public static void main(String[] args) {
 
-
         Flux.range(1, 10)
-                .log()
-                .delayElements(Duration.ofSeconds(1))
+                .filter(i -> i > 11)
+                .defaultIfEmpty(50)
                 .subscribe(Util.subscriber());
-
-        Util.sleepSeconds(12);
-
 
     }
 

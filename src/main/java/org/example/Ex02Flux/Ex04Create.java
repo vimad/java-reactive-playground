@@ -41,6 +41,7 @@ public class Ex04Create {
     private static void createFunctionExample() {
         log.info("Create function example");
         Flux.create(fluxSInk -> {
+            log.info("Will not invoked if not subscribe");
             fluxSInk.next(1);
             fluxSInk.next(2);
             fluxSInk.complete();
