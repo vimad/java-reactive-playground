@@ -1,10 +1,16 @@
 package org.example.common;
 
 import com.github.javafaker.Faker;
+import lombok.extern.slf4j.Slf4j;
+import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;
+import reactor.core.publisher.Flux;
 
 import java.time.Duration;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
+@Slf4j
 public class Util {
 
     private static final Faker faker = Faker.instance();
@@ -35,5 +41,12 @@ public class Util {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static <T> UnaryOperator<Flux<T>> fluxLogger(String producer) {
+        return flux -> flux
+            .doOnSubscribe(s -> log.info("subscribing to {}", producer))
+            .doOnCancel(() -> log.info("cancelling {}", producer))
+            .doOnComplete(() -> log.info("completed {}", producer));
     }
 }
